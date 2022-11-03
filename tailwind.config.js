@@ -10,6 +10,12 @@ module.exports = {
       primary: ['Montserrat', 'sans-serif'],
       secondary: ['Lora', 'serif'],
     },
+    fontSize: {
+      xs: ['0.75rem', '1rem'],
+      sm: ['0.875rem', '1.1875rem'],
+      base: ['1rem', '1.375rem'],
+      heading: ['1.5rem', '1.875rem'],
+    },
     colors: {
       grey: {
         50: '#FAFAFA',

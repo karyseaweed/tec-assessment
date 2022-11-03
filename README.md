@@ -1,6 +1,6 @@
 ## TEC Senior Web Developer Assessment
 
-# Task Breakdown
+### Task Breakdown
 
 1. Look for styling consistency and define global styles in tailwind.config
 2. Look for repeated elements to turn into low-level components (atoms and molecules), i.e. list items, list
