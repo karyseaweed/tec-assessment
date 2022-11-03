@@ -5,7 +5,7 @@ interface IconListItemProps {
 
 const IconListItem = ({ icon, content }: IconListItemProps) => {
   return (
-    <li className='flex lg:text-sm mb-1'>
+    <li className='flex lg:text-sm mb-1 text-grey-600'>
       <span className='min-w-[26px]'>
         <img
           src={`icon-${icon}.svg`}

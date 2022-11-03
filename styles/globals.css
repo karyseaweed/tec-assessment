@@ -3,5 +3,17 @@
 @tailwind utilities;
 
 body {
-  @apply font-primary text-base;
+  @apply font-primary text-base font-normal text-grey-800;
+}
+
+/* carousel */
+.swiper-button-prev,
+.swiper-button-next {
+  @apply bg-white rounded-full w-6 h-6 mt-0 -translate-y-1/2 lg:w-9 lg:h-9 bg-contain after:content-[''] !important;
+}
+.swiper-button-prev {
+  @apply bg-[url('/icon-chevron-prev.svg')];
+}
+.swiper-button-next {
+  @apply bg-[url('/icon-chevron-next.svg')];
 }
