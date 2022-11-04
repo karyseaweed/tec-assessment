@@ -1,30 +1,42 @@
 import { useState } from 'react';
 
 import Head from 'next/head';
-import Image from 'next/image';
 import GoldCheckListItem from '../components/GoldCheckListItem';
 import IconListItem from '../components/IconListItem';
 import Button from '../components/Button';
 import Carousel from '../components/Carousel';
+import Form from '../components/Form';
 
 export default function Home() {
-  // venue details and gold check list data should be stored somewhere else like a JSON file when we have more and more pages that look like this
+  // We can also put venue details and gold check list data on a separate JSON file, so we can see all venue details and descriptions at a glance
   interface venueDetails {
-    location: string;
-    capacity: string;
-    size: string;
-    phone: string;
+    location: React.ReactNode;
+    capacity: React.ReactNode;
+    size: React.ReactNode;
+    phone: React.ReactNode;
   }
 
   const venueDetails: venueDetails = {
-    location: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit.',
+    location: (
+      <>
+        Level 1, No. 28 Stanley Street, Central,{' '}
+        <span className='whitespace-nowrap'>Hong Kong</span>
+      </>
+    ),
     capacity: '100 Steated, 120 Standing',
     size: '3,300 sq.ft.',
-    phone: '+852 2293 2293',
+    phone: (
+      <>
+        <a href='tel:+85222932293'>+852 2293 2293</a>
+      </>
+    ),
   };
 
-  const goldCheckListItems: string[] = [
-    'Lorem ipsum dolor sit amet consectetur',
+  const goldCheckListItems: React.ReactNode[] = [
+    <>
+      Lorem ipsum dolor sit amet consectetur{' '}
+      <span className='whitespace-nowrap'>Hong Kong</span>
+    </>,
     'Buffet set up available',
     'Sed amet odit nisi nobis quae totam, id autem animi commodi ab ratione nam architecto distinctio delectus facere.',
   ];
@@ -60,18 +72,16 @@ export default function Home() {
                 <ul className='mb-5'>
                   {Object.keys(venueDetails).map((detail) => {
                     return (
-                      <IconListItem
-                        key={detail}
-                        icon={detail}
-                        content={venueDetails[detail as keyof venueDetails]}
-                      />
+                      <IconListItem key={detail} icon={detail}>
+                        {venueDetails[detail as keyof venueDetails]}
+                      </IconListItem>
                     );
                   })}
                 </ul>
                 {/* gold check list hidden in mobile by default, toggled by See More */}
                 <ul className={`mb-5 ${expand ? 'block' : 'hidden'} lg:block`}>
-                  {goldCheckListItems.map((item) => (
-                    <GoldCheckListItem key={item} content={item} />
+                  {goldCheckListItems.map((item, index) => (
+                    <GoldCheckListItem key={index}>{item}</GoldCheckListItem>
                   ))}
                 </ul>
                 <p
@@ -86,12 +96,8 @@ export default function Home() {
                 </p>
                 {/* buttons */}
                 <div className='fixed bottom-0 left-0 bg-white w-full pt-4 px-6 pb-8 lg:absolute lg:p-0'>
-                  <Button copy='enquiry' />
-                  <Button
-                    copy={<>360&deg; virtual tour</>}
-                    secondary
-                    className='hidden lg:block'
-                  />
+                  <Button>enquiry</Button>
+                  <Button>360&deg; virtual tour</Button>
                 </div>
               </div>
             </div>
@@ -100,15 +106,14 @@ export default function Home() {
         <section>
           <div className='border-[5px] border-blue'></div>
           <div className='h-[200px] px-6 pt-10 lg:pt-11 bg-grey-50 lg:border-x lg:border-b lg:border-grey-200'>
-            <form>
-              <h2 className='font-secondary text-heading text-blue mb-5'>
-                Have questions? Leave us a message.
-              </h2>
-              <p>
-                Complete the form and our team member will be in touch with you
-                shortly
-              </p>
-            </form>
+            <h2 className='font-secondary text-heading text-blue mb-5'>
+              Have questions? Leave us a message.
+            </h2>
+            <p>
+              Complete the form and our team member will be in touch with you
+              shortly
+            </p>
+            <Form />
           </div>
         </section>
       </main>

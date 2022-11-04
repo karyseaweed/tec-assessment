@@ -1,9 +1,9 @@
 interface IconListItemProps {
   icon: string;
-  content: string;
+  children: React.ReactNode;
 }
 
-const IconListItem = ({ icon, content }: IconListItemProps) => {
+const IconListItem = ({ icon, children }: IconListItemProps) => {
   return (
     <li className='flex lg:text-sm mb-1 text-grey-600'>
       <span className='min-w-[26px]'>
@@ -13,7 +13,7 @@ const IconListItem = ({ icon, content }: IconListItemProps) => {
           className='mt-1 lg:mt-0.5'
         />
       </span>
-      {content}
+      <span>{children}</span>
     </li>
   );
 };

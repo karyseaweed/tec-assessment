@@ -1,8 +1,8 @@
 interface GoldCheckListItemProps {
-  content: string;
+  children: React.ReactNode;
 }
 
-const GoldCheckListItem = ({ content }: GoldCheckListItemProps) => {
+const GoldCheckListItem = ({ children }: GoldCheckListItemProps) => {
   return (
     <li className='flex lg:text-sm mb-1'>
       <span className='min-w-[26px]'>
@@ -12,7 +12,7 @@ const GoldCheckListItem = ({ content }: GoldCheckListItemProps) => {
           className='mt-1 lg:mt-0.5'
         />
       </span>
-      {content}
+      <span>{children}</span>
     </li>
   );
 };
