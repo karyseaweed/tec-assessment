@@ -37,6 +37,7 @@ export default function Carousel({ slides }: CarouselProps) {
               priority
               width={793}
               height={480}
+              sizes='(min-width: 1025px) 793px, 100vw'
               className='object-cover w-full lg:min-h-[480px]'
             />
           </SwiperSlide>

@@ -8,7 +8,9 @@ import Carousel from '../components/Carousel';
 import Form from '../components/Form';
 
 export default function Home() {
-  // We can also put venue details and gold check list data on a separate JSON file, so we can see all venue details and descriptions at a glance
+  // In reality, carousel image sources, venue details, and gold check list data will most likely live on a seperate file or come from external sources. I've put them here so we don't overcomplicate things for this assessment.
+
+  const carouselImgs: number[] = [1, 2, 3];
   interface venueDetails {
     location: React.ReactNode;
     capacity: React.ReactNode;
@@ -61,7 +63,7 @@ export default function Home() {
         <section className='mb-14 px-6 lg:px-0 mt-8'>
           <div className='grid grid-cols-3 gap-5'>
             <div className='col-span-3 lg:col-span-2'>
-              <Carousel slides={[1, 2, 3]} />
+              <Carousel slides={carouselImgs} />
             </div>
             <div className='col-span-3 lg:col-span-1 lg:border lg:border-blue lg:px-4 lg:py-5'>
               <div className='relative h-full'>
@@ -96,8 +98,10 @@ export default function Home() {
                 </p>
                 {/* buttons */}
                 <div className='fixed bottom-0 left-0 bg-white w-full pt-4 px-6 pb-8 lg:absolute lg:p-0'>
-                  <Button>enquiry</Button>
-                  <Button>360&deg; virtual tour</Button>
+                  <Button className='lg:mb-2'>enquiry</Button>
+                  <Button className='hidden lg:block'>
+                    360&deg; virtual tour
+                  </Button>
                 </div>
               </div>
             </div>

@@ -12,7 +12,7 @@ const Button = ({ secondary, className, children }: ButtonProps) => {
   };
   return (
     <button
-      className={`w-full h-[42px] uppercase mb-2 last-of-type:mb-0 hover:bg-blue-muted hover:text-white ${
+      className={`w-full h-[42px] uppercase hover:bg-blue-muted hover:text-white ${
         secondary ? 'border border-blue text-blue' : 'bg-blue text-white'
       } ${className ? className : ''}`}
       onClick={handleClick}>
