@@ -1,9 +1,9 @@
 import React from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import * as yup from 'yup';
-import 'yup-phone';
 import { yupResolver } from '@hookform/resolvers/yup';
 // yup-phone utilizes google-libphonenumber (a library that parses, formats, stores, and validates international phone numbers), which gives accurate validation checks, so we don’t have to reinvent the wheel.
+import 'yup-phone';
 
 type Inputs = {
   fullName: string;
@@ -66,7 +66,7 @@ export default function Form() {
   };
 
   // subscribe to changes of centre
-  const watchCentre = watch('centre');
+  const watchCentre: string = watch('centre');
 
   // render different venues based on centre selected
   const switchVenues = (centre: string) => {
@@ -184,7 +184,10 @@ export default function Form() {
         className='block'
       />
 
-      <input type='submit' className='text-white bg-blue' />
+      <input
+        type='submit'
+        className='text-white bg-blue h-[42px] px-12 uppercase hover:bg-blue-muted'
+      />
     </form>
   );
 }
