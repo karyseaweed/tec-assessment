@@ -4,6 +4,7 @@ interface IconListItemProps {
 }
 
 const IconListItem = ({ icon, children }: IconListItemProps) => {
+  console.log('IconListItem rendered');
   return (
     <li className='flex lg:text-sm mb-1 text-grey-600'>
       <span className='min-w-[26px]'>

@@ -10,7 +10,7 @@ interface CarouselProps {
 }
 
 export default function Carousel({ slides }: CarouselProps) {
-  const handleClick = () => console.log('clicked 360deg tour icon on mobile');
+  console.log('Carousel rendered');
   return (
     <div className='lg:max-w-[793px]'>
       <Swiper
@@ -24,11 +24,6 @@ export default function Carousel({ slides }: CarouselProps) {
         navigation={true}
         modules={[Autoplay, Navigation]}
         className='carousel relative'>
-        <button
-          className='absolute right-4 top-4 z-10 lg:hidden'
-          onClick={handleClick}>
-          <img src='icon-360-tour.svg' aria-hidden='true' />
-        </button>
         {slides.map((imgId) => (
           <SwiperSlide key={imgId}>
             <Image

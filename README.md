@@ -7,6 +7,10 @@
 3. Combine low-level components into high-level components (organisms)
 4. Add components to page
 
+### Notes
+
+1. The current assumption is the carousel + venue details section has a fixed height of 480px, styles will need to adjust if otherwise.
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started

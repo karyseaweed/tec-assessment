@@ -31,6 +31,7 @@ module.exports = {
         light: '#256BA2',
         muted: '#406286',
       },
+      red: '#FF0000',
       white: '#FFFFFF',
       transparent: 'transparent',
     },

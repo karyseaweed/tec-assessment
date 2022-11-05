@@ -18,7 +18,7 @@ type Inputs = {
   amenity1: boolean;
   amenity2: boolean;
   amenity3: boolean;
-  amenity4: boolean;
+  amenityFour: boolean;
   amenity5: boolean;
   other: string;
 };
@@ -51,12 +51,13 @@ const validationSchema = yup.object().shape({
   amenity1: yup.boolean(),
   amenity2: yup.boolean(),
   amenity3: yup.boolean(),
-  amenity4: yup.boolean(),
+  amenityFour: yup.boolean(),
   amenity5: yup.boolean(),
   other: yup.string(),
 });
 
 export default function Form() {
+  console.log('Form rendered');
   const {
     register,
     handleSubmit,
@@ -108,32 +109,43 @@ export default function Form() {
     <form onSubmit={handleSubmit(onSubmit)}>
       <div className='grid grid-cols-3 gap-8 lg:gap-16'>
         <div className='col-span-3 lg:col-span-2 lg:grid lg:grid-cols-2 lg:gap-x-16 lg:gap-y-2'>
-          <input
-            {...register('fullName')}
-            type='text'
-            id='fullName'
-            placeholder='Full Name*'
-            className='lg:order-1'
-          />
-          {errors.fullName && <p>{errors.fullName.message}</p>}
+          <div className='lg:order-1 relative'>
+            <input
+              {...register('fullName')}
+              type='text'
+              id='fullName'
+              placeholder='Full Name*'
+            />
+            {errors.fullName && (
+              <p className='error-message'>{errors.fullName.message}</p>
+            )}
+          </div>
 
-          <input
-            {...register('phone')}
-            type='tel'
-            id='phone'
-            placeholder='Phone Number*'
-            className='lg:order-3'
-          />
-          {errors.phone && <p>Please enter a valid phone number.</p>}
+          <div className='lg:order-3 relative'>
+            <input
+              {...register('phone')}
+              type='tel'
+              id='phone'
+              placeholder='Phone Number*'
+            />
+            {errors.phone && (
+              <p className='error-message'>
+                Please enter a valid phone number.
+              </p>
+            )}
+          </div>
 
-          <input
-            {...register('email')}
-            type='email'
-            id='email'
-            placeholder='Email*'
-            className='lg:order-5'
-          />
-          {errors.email && <p>{errors.email.message}</p>}
+          <div className='lg:order-5 relative'>
+            <input
+              {...register('email')}
+              type='email'
+              id='email'
+              placeholder='Email*'
+            />
+            {errors.email && (
+              <p className='error-message'>{errors.email.message}</p>
+            )}
+          </div>
 
           <input
             {...register('company')}
@@ -207,11 +219,11 @@ export default function Form() {
               </div>
               <div className='inline-flex items-center gap-2'>
                 <input
-                  {...register('amenity4')}
+                  {...register('amenityFour')}
                   type='checkbox'
-                  id='amenity4'
+                  id='amenityFour'
                 />
-                <label htmlFor='amenity4'>amenity 4</label>
+                <label htmlFor='amenityFour'>amenity Four</label>
               </div>
               <div className='inline-flex items-center gap-2'>
                 <input
@@ -219,7 +231,7 @@ export default function Form() {
                   type='checkbox'
                   id='amenity5'
                 />
-                <label htmlFor='amenity5'>amenity 5</label>
+                <label htmlFor='amenity5'>Lorem ipsum dolor</label>
               </div>
             </div>
           </div>

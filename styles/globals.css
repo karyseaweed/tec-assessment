@@ -29,3 +29,6 @@ input {
 .checkbox-group input {
   @apply mb-0 w-max checked:bg-blue;
 }
+.error-message {
+  @apply text-sm text-red absolute -bottom-6 lg:bottom-2;
+}
