@@ -17,3 +17,9 @@ body {
 .swiper-button-next {
   @apply bg-[url('/icon-chevron-next.svg')];
 }
+
+/* form */
+input,
+select {
+  @apply block mb-4;
+}

@@ -109,11 +109,11 @@ export default function Home() {
         </section>
         <section>
           <div className='border-[5px] border-blue'></div>
-          <div className='h-[200px] px-6 pt-10 lg:pt-11 bg-grey-50 lg:border-x lg:border-b lg:border-grey-200'>
+          <div className='px-6 py-10 lg:pt-11 bg-grey-50 lg:border-x lg:border-b lg:border-grey-200'>
             <h2 className='font-secondary text-heading text-blue mb-5'>
               Have questions? Leave us a message.
             </h2>
-            <p>
+            <p className='mb-8'>
               Complete the form and our team member will be in touch with you
               shortly
             </p>
