@@ -21,5 +21,11 @@ body {
 /* form */
 input,
 select {
-  @apply block mb-4;
+  @apply block w-full mb-8 bg-transparent border-b border-grey-300 focus-visible:outline-0 text-sm;
+}
+input {
+  @apply placeholder:text-grey-500;
+}
+.checkbox-group input {
+  @apply mb-0 w-max checked:bg-blue;
 }
