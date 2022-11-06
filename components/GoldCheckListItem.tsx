@@ -1,14 +1,13 @@
-interface IconListItemProps {
-  icon: string;
+interface GoldCheckListItemProps {
   children: React.ReactNode;
 }
 
-const IconListItem = ({ icon, children }: IconListItemProps) => {
+const GoldCheckListItem = ({ children }: GoldCheckListItemProps) => {
   return (
-    <li className='flex lg:text-sm mb-1 text-grey-600'>
+    <li className='flex lg:text-sm mb-1'>
       <span className='min-w-[26px]'>
         <img
-          src={`icon-${icon}.svg`}
+          src='icon-gold-check.svg'
           aria-hidden='true'
           className='mt-1 lg:mt-0.5'
         />
@@ -18,4 +17,4 @@ const IconListItem = ({ icon, children }: IconListItemProps) => {
   );
 };
 
-export default IconListItem;
+export default GoldCheckListItem;

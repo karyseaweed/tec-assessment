@@ -5,7 +5,6 @@ interface GoldCheckListItemProps {
 }
 
 const GoldCheckListItem = ({ children }: GoldCheckListItemProps) => {
-  console.log('GoldCheckListItem rendered');
   return (
     <li className='flex lg:text-sm mb-1'>
       <span className='min-w-[26px]'>
@@ -25,7 +24,6 @@ interface GoldCheckListProps {
 }
 
 const GoldCheckList = ({ goldCheckListItems }: GoldCheckListProps) => {
-  console.log('GoldCheckList rendered');
   const [expand, setExpand] = useState(false);
   const toggleGoldCheckList = () => {
     setExpand(!expand);

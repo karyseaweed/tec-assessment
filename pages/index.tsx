@@ -1,5 +1,3 @@
-import { useState, useRef } from 'react';
-
 import Head from 'next/head';
 import IconListItem from '../components/IconListItem';
 import Button from '../components/Button';
@@ -43,11 +41,8 @@ export const goldCheckListItems: React.ReactNode[] = [
 ];
 
 export default function Home() {
-  const buttonRef = useRef<HTMLButtonElement>(null);
-  const handleClick = () => {
-    console.log(
-      buttonRef.current && buttonRef.current.getAttribute('data-button')
-    );
+  const logButtonName = (e: React.MouseEvent<HTMLButtonElement>): void => {
+    console.log(e.currentTarget.getAttribute('data-button'));
   };
   return (
     <div>
@@ -86,17 +81,20 @@ export default function Home() {
                 <GoldCheckList goldCheckListItems={goldCheckListItems} />
                 {/* buttons */}
                 <div className='fixed z-10 bottom-0 left-0 bg-white w-full pt-4 px-6 pb-8 lg:absolute lg:p-0'>
-                  <Button className='lg:mb-2'>enquiry</Button>
-                  <Button className='hidden lg:block'>
+                  <Button clickHandler={logButtonName} className='lg:mb-2'>
+                    enquiry
+                  </Button>
+                  <Button
+                    clickHandler={logButtonName}
+                    className='hidden lg:block'>
                     360&deg; virtual tour
                   </Button>
                 </div>
                 <button
-                  data-button='360 virtual tour'
-                  className='absolute right-4 top-4 z-10 lg:hidden'
-                  ref={buttonRef}
-                  onClick={handleClick}>
-                  <img src='icon-360-tour.svg' aria-hidden='true' />
+                  data-button='360&deg; virtual tour'
+                  onClick={logButtonName}
+                  className='absolute right-4 top-4 z-10 lg:hidden'>
+                  <img src='icon-360-tour.svg' />
                 </button>
               </div>
             </div>

@@ -10,7 +10,6 @@ interface CarouselProps {
 }
 
 export default function Carousel({ slides }: CarouselProps) {
-  console.log('Carousel rendered');
   return (
     <div className='lg:max-w-[793px]'>
       <Swiper
@@ -27,12 +26,13 @@ export default function Carousel({ slides }: CarouselProps) {
         {slides.map((imgId) => (
           <SwiperSlide key={imgId}>
             <Image
-              src={`https://picsum.photos/id/${imgId}/793/480`}
+              src={`https://picsum.photos/id/${imgId}/1586/960`}
+              // src={`https://picsum.photos/id/${imgId}/793/480`}
               alt=''
               priority
-              width={793}
-              height={480}
-              sizes='(min-width: 1025px) 793px, 100vw'
+              width={1586}
+              height={960}
+              sizes='(min-width: 1025px) 1586px, 200vw'
               className='object-cover w-full lg:min-h-[480px]'
             />
           </SwiperSlide>

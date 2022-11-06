@@ -19,7 +19,7 @@ type Inputs = {
   amenity2: boolean;
   amenity3: boolean;
   amenityFour: boolean;
-  amenity5: boolean;
+  amenityLoremIpsum: boolean;
   other: string;
 };
 
@@ -52,12 +52,11 @@ const validationSchema = yup.object().shape({
   amenity2: yup.boolean(),
   amenity3: yup.boolean(),
   amenityFour: yup.boolean(),
-  amenity5: yup.boolean(),
+  amenityLoremIpsum: yup.boolean(),
   other: yup.string(),
 });
 
 export default function Form() {
-  console.log('Form rendered');
   const {
     register,
     handleSubmit,
@@ -109,7 +108,7 @@ export default function Form() {
     <form onSubmit={handleSubmit(onSubmit)}>
       <div className='grid grid-cols-3 gap-8 lg:gap-16'>
         <div className='col-span-3 lg:col-span-2 lg:grid lg:grid-cols-2 lg:gap-x-16 lg:gap-y-2'>
-          <div className='lg:order-1 relative'>
+          <div className='lg:order-1 lg:mt-3 relative'>
             <input
               {...register('fullName')}
               type='text'
@@ -155,15 +154,29 @@ export default function Form() {
             className='lg:order-7'
           />
 
-          <select id='centre' {...register('centre')} className='lg:order-0'>
-            <option value='centre1'>Centre 1</option>
-            <option value='centre2'>Centre 2</option>
-            <option value='centre3'>Centre 3</option>
-          </select>
+          <div className='lg:order-0 lg:mt-3 relative'>
+            <label
+              htmlFor='centre'
+              className='absolute text-xs text-grey-400 -top-5'>
+              Centre
+            </label>
+            <select id='centre' {...register('centre')}>
+              <option value='centre1'>Centre 1</option>
+              <option value='centre2'>Centre 2</option>
+              <option value='centre3'>Centre 3</option>
+            </select>
+          </div>
 
-          <select id='venue' {...register('venue')} className='lg:order-2'>
-            {switchVenues(watchCentre)}
-          </select>
+          <div className='lg:order-2 relative'>
+            <label
+              htmlFor='venue'
+              className='absolute text-xs text-grey-400 -top-5'>
+              Venue
+            </label>
+            <select id='venue' {...register('venue')}>
+              {switchVenues(watchCentre)}
+            </select>
+          </div>
 
           <input
             {...register('eventDate', { valueAsDate: true })}
@@ -182,16 +195,23 @@ export default function Form() {
             className='lg:order-6'
           />
 
-          <input
-            {...register('foodBeverages')}
-            type='text'
-            id='foodBeverages'
-            placeholder='Food & Beverage(Any food and beverage requirements?)'
-            className='lg:order-9'
-          />
+          <div className='lg:order-9 relative'>
+            <label
+              htmlFor='foodBeverages'
+              className='text-sm text-grey-500 absolute -top-4'>
+              Food & Beverage
+            </label>
+            <input
+              {...register('foodBeverages')}
+              type='text'
+              id='foodBeverages'
+              placeholder='(Any food and beverage requirements?)'
+              className='placeholder:text-xs'
+            />
+          </div>
 
-          <div className='checkbox-group text-grey-500 text-sm w-full lg:order-8'>
-            <p className='text-xs'>Amenities</p>
+          <div className='checkbox-group text-grey-500 text-sm w-full lg:order-8 relative'>
+            <p className='text-xs absolute -top-5'>Amenities</p>
             <div className='flex flex-wrap gap-x-4 gap-y-1'>
               <div className='inline-flex items-center gap-2'>
                 <input
@@ -227,11 +247,11 @@ export default function Form() {
               </div>
               <div className='inline-flex items-center gap-2'>
                 <input
-                  {...register('amenity5')}
+                  {...register('amenityLoremIpsum')}
                   type='checkbox'
-                  id='amenity5'
+                  id='amenityLoremIpsum'
                 />
-                <label htmlFor='amenity5'>Lorem ipsum dolor</label>
+                <label htmlFor='amenityLoremIpsum'>Lorem ipsum dolor</label>
               </div>
             </div>
           </div>
@@ -241,13 +261,13 @@ export default function Form() {
           {...register('other')}
           id='other'
           placeholder='Other requirements?'
-          className='col-span-3 lg:col-span-1 block p-3 border border-grey-300 bg-transparent placeholder:text-grey-500 placeholder:text-sm focus-visible:outline-0'
+          className='col-span-3 lg:col-span-1 block h-[287px] p-3 border border-grey-300 bg-transparent text-sm placeholder:text-grey-500 focus-visible:outline-0'
         />
       </div>
 
       <input
         type='submit'
-        className='w-max my-4 text-white bg-blue h-[42px] px-12 uppercase cursor-pointer hover:bg-blue-muted'
+        className='w-max mt-6 mb-4 text-white bg-blue h-[42px] px-12 uppercase cursor-pointer hover:bg-blue-muted'
       />
       <p className='text-sm mb-16 lg:mb-0'>*Required Fields</p>
     </form>
