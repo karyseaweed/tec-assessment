@@ -68,7 +68,7 @@ export default function Home() {
             </div>
             <div className='col-span-3 lg:col-span-1 lg:border lg:border-blue lg:px-4 lg:py-5'>
               <div className='lg:relative h-full'>
-                <h1 className='font-secondary text-heading text-blue mb-5'>
+                <h1 className='font-secondary font-bold text-heading text-blue mb-5'>
                   28 Stanley Street - Level 1
                 </h1>
                 {/* icon list */}
