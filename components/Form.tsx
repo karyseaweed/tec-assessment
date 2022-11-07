@@ -12,7 +12,7 @@ type Inputs = {
   company: string;
   centre: string;
   venue: string;
-  eventDate: Date;
+  eventDate: string;
   eventTime: string;
   foodBeverages: string;
   amenity1: boolean;
@@ -45,7 +45,7 @@ const validationSchema = yup.object().shape({
       'centre3-venue2',
       'centre3-venue3',
     ]),
-  eventDate: yup.date().min(today),
+  eventDate: yup.string(),
   eventTime: yup.string(),
   foodBeverages: yup.string(),
   amenity1: yup.boolean(),
@@ -66,7 +66,7 @@ export default function Form() {
   } = useForm<Inputs>({
     resolver: yupResolver(validationSchema),
   });
-  const onSubmit: SubmitHandler<Inputs> = (data) => {
+  const onSubmit: SubmitHandler<Inputs> = (data): void => {
     console.log(data);
     reset();
   };
@@ -75,7 +75,7 @@ export default function Form() {
   const watchCentre: string = watch('centre');
 
   // render different venues based on centre selected
-  const switchVenues = (centre: string) => {
+  const switchVenues = (centre: string): React.ReactNode => {
     switch (centre) {
       case 'centre2':
         return (
@@ -104,172 +104,187 @@ export default function Form() {
     }
   };
 
+  interface amenities {
+    name:
+      | 'amenity1'
+      | 'amenity2'
+      | 'amenity3'
+      | 'amenityFour'
+      | 'amenityLoremIpsum';
+    label: string;
+  }
+
+  const amenities: amenities[] = [
+    { name: 'amenity1', label: 'amenity 1' },
+    { name: 'amenity2', label: 'amenity 2' },
+    { name: 'amenity3', label: 'amenity 3' },
+    { name: 'amenityFour', label: 'amenity Four' },
+    { name: 'amenityLoremIpsum', label: 'Lorem ipsum dolor' },
+  ];
+
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
-      <div className='grid grid-cols-3 gap-8 lg:gap-16'>
-        <div className='col-span-3 lg:col-span-2 lg:grid lg:grid-cols-2 lg:gap-x-16 lg:gap-y-2'>
-          <div className='lg:order-1 lg:mt-3 relative'>
-            <input
-              {...register('fullName')}
-              type='text'
-              id='fullName'
-              placeholder='Full Name*'
-            />
-            {errors.fullName && (
-              <p className='error-message'>{errors.fullName.message}</p>
-            )}
-          </div>
-
-          <div className='lg:order-3 relative'>
-            <input
-              {...register('phone')}
-              type='tel'
-              id='phone'
-              placeholder='Phone Number*'
-            />
-            {errors.phone && (
-              <p className='error-message'>
-                Please enter a valid phone number.
-              </p>
-            )}
-          </div>
-
-          <div className='lg:order-5 relative'>
-            <input
-              {...register('email')}
-              type='email'
-              id='email'
-              placeholder='Email*'
-            />
-            {errors.email && (
-              <p className='error-message'>{errors.email.message}</p>
-            )}
-          </div>
-
-          <input
-            {...register('company')}
-            type='text'
-            id='company'
-            placeholder='Company'
-            className='lg:order-7'
-          />
-
-          <div className='lg:order-0 lg:mt-3 relative'>
-            <label
-              htmlFor='centre'
-              className='absolute text-xs text-grey-400 -top-5'>
-              Centre
-            </label>
-            <select id='centre' {...register('centre')}>
-              <option value='centre1'>Centre 1</option>
-              <option value='centre2'>Centre 2</option>
-              <option value='centre3'>Centre 3</option>
-            </select>
-          </div>
-
-          <div className='lg:order-2 relative'>
-            <label
-              htmlFor='venue'
-              className='absolute text-xs text-grey-400 -top-5'>
-              Venue
-            </label>
-            <select id='venue' {...register('venue')}>
-              {switchVenues(watchCentre)}
-            </select>
-          </div>
-
-          <input
-            {...register('eventDate', { valueAsDate: true })}
-            type='text'
-            onFocus={(e) => (e.target.type = 'date')} // or should this just be a string input?
-            id='eventDate'
-            placeholder='Event Date'
-            className='lg:order-4'
-          />
-
-          <input
-            {...register('eventTime')}
-            type='text'
-            id='eventTime'
-            placeholder='Event Time'
-            className='lg:order-6'
-          />
-
-          <div className='lg:order-9 relative'>
-            <label
-              htmlFor='foodBeverages'
-              className='text-sm text-grey-500 absolute -top-4'>
-              Food & Beverage
-            </label>
-            <input
-              {...register('foodBeverages')}
-              type='text'
-              id='foodBeverages'
-              placeholder='(Any food and beverage requirements?)'
-              className='placeholder:text-xs'
-            />
-          </div>
-
-          <div className='checkbox-group text-grey-500 text-sm w-full lg:order-8 relative'>
-            <p className='text-xs absolute -top-5'>Amenities</p>
-            <div className='flex flex-wrap gap-x-4 gap-y-1'>
-              <div className='inline-flex items-center gap-2'>
+    <>
+      <div className='border-[5px] border-blue'></div>
+      <div className='px-6 py-10 lg:pt-11 bg-grey-50 lg:border-x lg:border-b lg:border-grey-200'>
+        <h2 className='font-secondary text-heading text-blue mb-5'>
+          Have questions? Leave us a message.
+        </h2>
+        <p className='mb-8'>
+          Complete the form and our team member will be in touch with you
+          shortly
+        </p>
+        <form onSubmit={handleSubmit(onSubmit)}>
+          <div className='grid grid-cols-3 gap-8 lg:gap-16'>
+            <div className='col-span-3 lg:col-span-2 lg:grid lg:grid-cols-2 lg:gap-x-16 lg:gap-y-2'>
+              <div className='lg:order-1 lg:mt-3 relative'>
                 <input
-                  {...register('amenity1')}
-                  type='checkbox'
-                  id='amenity1'
+                  {...register('fullName')}
+                  type='text'
+                  id='fullName'
+                  placeholder='Full Name*'
                 />
-                <label htmlFor='amenity1'>amenity 1</label>
+                {errors.fullName && (
+                  <p className='error-message'>{errors.fullName.message}</p>
+                )}
               </div>
-              <div className='inline-flex items-center gap-2'>
+
+              <div className='lg:order-3 relative'>
                 <input
-                  {...register('amenity2')}
-                  type='checkbox'
-                  id='amenity2'
+                  {...register('phone')}
+                  type='tel'
+                  id='phone'
+                  placeholder='Phone Number*'
                 />
-                <label htmlFor='amenity2'>amenity 2</label>
+                {errors.phone && (
+                  <p className='error-message'>
+                    Please enter a valid phone number.
+                  </p>
+                )}
               </div>
-              <div className='inline-flex items-center gap-2'>
+
+              <div className='lg:order-5 relative'>
                 <input
-                  {...register('amenity3')}
-                  type='checkbox'
-                  id='amenity3'
+                  {...register('email')}
+                  type='email'
+                  id='email'
+                  placeholder='Email*'
                 />
-                <label htmlFor='amenity3'>amenity 3</label>
+                {errors.email && (
+                  <p className='error-message'>{errors.email.message}</p>
+                )}
               </div>
-              <div className='inline-flex items-center gap-2'>
-                <input
-                  {...register('amenityFour')}
-                  type='checkbox'
-                  id='amenityFour'
-                />
-                <label htmlFor='amenityFour'>amenity Four</label>
+
+              <input
+                {...register('company')}
+                type='text'
+                id='company'
+                placeholder='Company'
+                className='lg:order-7'
+              />
+
+              <div className='lg:order-0 lg:mt-3 relative'>
+                <label
+                  htmlFor='centre'
+                  className='absolute text-xs text-grey-400 -top-5'>
+                  Centre
+                </label>
+                <div className='border-b border-grey-300 mb-9 lg:mb-7 flex items-center'>
+                  <img
+                    src='icon-building.svg'
+                    alt=''
+                    aria-hidden='true'
+                    className='pb-1.5 mr-1'
+                  />
+                  <select id='centre' {...register('centre')}>
+                    <option value='centre1'>Centre 1</option>
+                    <option value='centre2'>Centre 2</option>
+                    <option value='centre3'>Centre 3</option>
+                  </select>
+                </div>
               </div>
-              <div className='inline-flex items-center gap-2'>
+
+              <div className='lg:order-2 relative'>
+                <label
+                  htmlFor='venue'
+                  className='absolute text-xs text-grey-400 -top-5'>
+                  Venue
+                </label>
+                <div className='border-b border-grey-300 mb-9 lg:mb-7 flex items-center'>
+                  <img
+                    src='icon-building.svg'
+                    alt=''
+                    aria-hidden='true'
+                    className='pb-1.5 mr-1'
+                  />
+                  <select id='venue' {...register('venue')}>
+                    {switchVenues(watchCentre)}
+                  </select>
+                </div>
+              </div>
+
+              <input
+                {...register('eventDate')}
+                type='text'
+                id='eventDate'
+                placeholder='Event Date'
+                className='lg:order-4'
+              />
+
+              <input
+                {...register('eventTime')}
+                type='text'
+                id='eventTime'
+                placeholder='Event Time'
+                className='lg:order-6'
+              />
+
+              <div className='lg:order-9 relative'>
+                <label
+                  htmlFor='foodBeverages'
+                  className='text-sm text-grey-500 absolute -top-5'>
+                  Food & Beverage
+                </label>
                 <input
-                  {...register('amenityLoremIpsum')}
-                  type='checkbox'
-                  id='amenityLoremIpsum'
+                  {...register('foodBeverages')}
+                  type='text'
+                  id='foodBeverages'
+                  placeholder='(Any food and beverage requirements?)'
+                  className='placeholder:text-xs'
                 />
-                <label htmlFor='amenityLoremIpsum'>Lorem ipsum dolor</label>
+              </div>
+
+              <div className='text-grey-500 text-sm w-full lg:order-8 relative'>
+                <p className='text-xs absolute -top-5'>Amenities</p>
+                <div className='flex flex-wrap gap-x-4 gap-y-1'>
+                  {amenities.map((amenity) => (
+                    <div key={amenity.name} className='checkbox-container'>
+                      <input
+                        {...register(amenity.name)}
+                        type='checkbox'
+                        id={amenity.name}
+                      />
+                      <label htmlFor={amenity.name}>{amenity.label}</label>
+                    </div>
+                  ))}
+                </div>
               </div>
             </div>
+
+            <textarea
+              {...register('other')}
+              id='other'
+              placeholder='Other requirements?'
+              className='col-span-3 lg:col-span-1 block h-[287px] p-3 border border-grey-300 bg-transparent text-sm placeholder:text-grey-500 focus-visible:outline-0'
+            />
           </div>
-        </div>
 
-        <textarea
-          {...register('other')}
-          id='other'
-          placeholder='Other requirements?'
-          className='col-span-3 lg:col-span-1 block h-[287px] p-3 border border-grey-300 bg-transparent text-sm placeholder:text-grey-500 focus-visible:outline-0'
-        />
+          <input
+            type='submit'
+            className='w-max mt-6 mb-4 text-white bg-blue h-[42px] px-12 uppercase cursor-pointer hover:bg-blue-muted'
+          />
+          <p className='text-sm mb-12 lg:mb-0'>*Required Fields</p>
+        </form>
       </div>
-
-      <input
-        type='submit'
-        className='w-max mt-6 mb-4 text-white bg-blue h-[42px] px-12 uppercase cursor-pointer hover:bg-blue-muted'
-      />
-      <p className='text-sm mb-16 lg:mb-0'>*Required Fields</p>
-    </form>
+    </>
   );
 }

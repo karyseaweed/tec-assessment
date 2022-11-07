@@ -1,24 +1,5 @@
 import { useState } from 'react';
 
-interface GoldCheckListItemProps {
-  children: React.ReactNode;
-}
-
-const GoldCheckListItem = ({ children }: GoldCheckListItemProps) => {
-  return (
-    <li className='flex lg:text-sm mb-1'>
-      <span className='min-w-[26px]'>
-        <img
-          src='icon-gold-check.svg'
-          aria-hidden='true'
-          className='mt-1 lg:mt-0.5'
-        />
-      </span>
-      <span>{children}</span>
-    </li>
-  );
-};
-
 interface GoldCheckListProps {
   goldCheckListItems: React.ReactNode[];
 }
@@ -33,7 +14,16 @@ const GoldCheckList = ({ goldCheckListItems }: GoldCheckListProps) => {
       {/* gold check list hidden in mobile by default, toggled by See More */}
       <ul className={`mb-5 ${expand ? 'block' : 'hidden'} lg:block`}>
         {goldCheckListItems.map((item, index) => (
-          <GoldCheckListItem key={index}>{item}</GoldCheckListItem>
+          <li key={index} className='flex lg:text-sm mb-1'>
+            <span className='min-w-[26px]'>
+              <img
+                src='icon-gold-check.svg'
+                aria-hidden='true'
+                className='mt-1 lg:mt-0.5'
+              />
+            </span>
+            <span>{item}</span>
+          </li>
         ))}
       </ul>
       <p

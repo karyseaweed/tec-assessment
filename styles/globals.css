@@ -21,13 +21,16 @@ body {
 /* form */
 input,
 select {
-  @apply block w-full pb-1.5 mb-9 lg:mb-7 bg-transparent border-b border-grey-300 focus-visible:outline-0 text-sm;
+  @apply block w-full pb-1.5 bg-transparent focus-visible:outline-0 text-sm;
 }
 input {
-  @apply placeholder:text-grey-500;
+  @apply border-b border-grey-300 mb-9 lg:mb-7 placeholder:text-grey-500;
 }
-.checkbox-group input {
-  @apply mb-0 w-max checked:bg-blue;
+.checkbox-container {
+  @apply inline-flex items-center gap-1.5;
+}
+input[type='checkbox'] {
+  @apply mb-0 w-max appearance-none w-3 h-3 border border-grey-200 rounded-sm bg-white checked:bg-blue;
 }
 .error-message {
   @apply text-sm text-red absolute -bottom-6 lg:bottom-2;

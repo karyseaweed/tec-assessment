@@ -9,7 +9,8 @@
 
 ### Notes
 
-1. The current assumption is the carousel + venue details section has a fixed height of 480px, styles will need to adjust if otherwise.
+1. Normally I wouldn't work directly in the main branch, but I did this time since I'm the only developer.
+2. The current assumption is the carousel + venue details section has a fixed height of 480px, styles will need to adjust if otherwise.
 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
