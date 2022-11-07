@@ -18,6 +18,9 @@ const GoldCheckList = ({ goldCheckListItems }: GoldCheckListProps) => {
             <span className='min-w-[26px]'>
               <img
                 src='icon-gold-check.svg'
+                width='14'
+                height='12'
+                alt=''
                 aria-hidden='true'
                 className='mt-1 lg:mt-0.5'
               />
@@ -32,6 +35,9 @@ const GoldCheckList = ({ goldCheckListItems }: GoldCheckListProps) => {
         See {expand ? 'Less' : 'More'}
         <img
           src='icon-caret.svg'
+          width='10'
+          height='6'
+          alt=''
           aria-hidden='true'
           className={`inline-block ml-2 ${expand && 'rotate-180'}`}
         />

@@ -16,8 +16,9 @@ export default function Carousel({ slides }: CarouselProps) {
         centeredSlides={true}
         loop={true}
         autoplay={{
-          delay: 2500,
+          delay: 1500,
           disableOnInteraction: false,
+          pauseOnMouseEnter: true,
         }}
         speed={1000}
         navigation={true}

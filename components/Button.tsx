@@ -14,7 +14,7 @@ const Button = ({
   return (
     <button
       data-button={children}
-      className={`w-full h-[42px] uppercase hover:bg-blue-muted hover:text-white ${
+      className={`w-full h-[42px] uppercase font-medium hover:bg-blue-muted hover:text-white ${
         secondary ? 'border border-blue text-blue' : 'bg-blue text-white'
       } ${className ? className : ''}`}
       onClick={clickHandler}>

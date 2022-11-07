@@ -89,6 +89,7 @@ export default function Home() {
                     enquiry
                   </Button>
                   <Button
+                    secondary
                     clickHandler={logButtonName}
                     className='hidden lg:block'>
                     360&deg; virtual tour
@@ -102,6 +103,7 @@ export default function Home() {
                     src='icon-360-tour.svg'
                     alt='360&deg; virtual tour button'
                     width='44'
+                    height='44'
                   />
                 </button>
               </div>

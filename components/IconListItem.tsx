@@ -9,6 +9,7 @@ const IconListItem = ({ icon, children }: IconListItemProps) => {
       <span className='min-w-[26px]'>
         <img
           src={`icon-${icon}.svg`}
+          alt=''
           aria-hidden='true'
           className='mt-1 lg:mt-0.5'
         />

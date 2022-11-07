@@ -131,7 +131,7 @@ export default function Form() {
         </h2>
         <p className='mb-8'>
           Complete the form and our team member will be in touch with you
-          shortly
+          shortly.
         </p>
         <form onSubmit={handleSubmit(onSubmit)}>
           <div className='grid grid-cols-3 gap-8 lg:gap-16'>
@@ -191,6 +191,8 @@ export default function Form() {
                 <div className='border-b border-grey-300 mb-9 lg:mb-7 flex items-center'>
                   <img
                     src='icon-building.svg'
+                    width='12'
+                    height='18'
                     alt=''
                     aria-hidden='true'
                     className='pb-1.5 mr-1'
@@ -212,6 +214,8 @@ export default function Form() {
                 <div className='border-b border-grey-300 mb-9 lg:mb-7 flex items-center'>
                   <img
                     src='icon-building.svg'
+                    width='12'
+                    height='18'
                     alt=''
                     aria-hidden='true'
                     className='pb-1.5 mr-1'
@@ -280,7 +284,7 @@ export default function Form() {
 
           <input
             type='submit'
-            className='w-max mt-6 mb-4 text-white bg-blue h-[42px] px-12 pb-0 uppercase cursor-pointer hover:bg-blue-muted'
+            className='text-base font-medium w-max mt-6 mb-4 text-white bg-blue h-[42px] px-12 pb-0 uppercase cursor-pointer hover:bg-blue-muted'
           />
           <p className='text-sm mb-12 lg:mb-0'>*Required Fields</p>
         </form>
