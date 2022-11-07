@@ -101,6 +101,7 @@ export default function Home() {
                   <img
                     src='icon-360-tour.svg'
                     alt='360&deg; virtual tour button'
+                    width='44'
                   />
                 </button>
               </div>

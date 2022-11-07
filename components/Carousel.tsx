@@ -27,12 +27,11 @@ export default function Carousel({ slides }: CarouselProps) {
           <SwiperSlide key={imgId}>
             <Image
               src={`https://picsum.photos/id/${imgId}/1586/960`}
-              // src={`https://picsum.photos/id/${imgId}/793/480`}
               alt=''
               priority
               width={1586}
               height={960}
-              sizes='(min-width: 1025px) 1586px, 200vw'
+              sizes='(max-width: 1024px) 200vw'
               className='object-cover w-full lg:min-h-[480px]'
             />
           </SwiperSlide>

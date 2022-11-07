@@ -280,7 +280,7 @@ export default function Form() {
 
           <input
             type='submit'
-            className='w-max mt-6 mb-4 text-white bg-blue h-[42px] px-12 uppercase cursor-pointer hover:bg-blue-muted'
+            className='w-max mt-6 mb-4 text-white bg-blue h-[42px] px-12 pb-0 uppercase cursor-pointer hover:bg-blue-muted'
           />
           <p className='text-sm mb-12 lg:mb-0'>*Required Fields</p>
         </form>
