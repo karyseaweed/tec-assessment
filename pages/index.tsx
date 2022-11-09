@@ -16,7 +16,7 @@ export default function Home() {
 
   const venueDetails: venueDetails[] = [
     {
-      icon: 'location',
+      icon: 'icon-location.svg',
       detail: (
         <>
           Level 1, No. 28 Stanley Street, Central,{' '}
@@ -24,10 +24,10 @@ export default function Home() {
         </>
       ),
     },
-    { icon: 'capacity', detail: '100 Steated, 120 Standing' },
-    { icon: 'size', detail: '3,300 sq.ft.' },
+    { icon: 'icon-capacity.svg', detail: '100 Steated, 120 Standing' },
+    { icon: 'icon-size.svg', detail: '3,300 sq.ft.' },
     {
-      icon: 'phone',
+      icon: 'icon-phone.svg',
       detail: (
         <>
           <a href='tel:+85222932293'>+852 2293 2293</a>

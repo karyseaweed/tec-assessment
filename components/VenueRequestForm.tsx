@@ -1,4 +1,4 @@
-import { useRef, useEffect } from 'react';
+import { useState } from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -24,9 +24,12 @@ type Inputs = {
 };
 
 const validationSchema = yup.object().shape({
-  fullName: yup.string().required('Please enter your full name.'),
-  phone: yup.string().phone().required(),
-  email: yup.string().email().required('Please enter a valid email address.'),
+  // fullName: yup.string().required('Please enter your full name.'),
+  // phone: yup.string().phone().required(),
+  // email: yup.string().email().required('Please enter a valid email address.'),
+  fullName: yup.string(),
+  phone: yup.string(),
+  email: yup.string(),
   company: yup.string(),
   centre: yup.string().oneOf(['centre1', 'centre2', 'centre3']),
   venue: yup
@@ -54,10 +57,45 @@ const validationSchema = yup.object().shape({
 });
 
 export default function VenueRequestForm() {
+  interface venueOptions {
+    centre1: {
+      value: string;
+      label: string;
+    }[];
+    centre2: {
+      value: string;
+      label: string;
+    }[];
+    centre3: {
+      value: string;
+      label: string;
+    }[];
+  }
+
+  const venueOptions: venueOptions = {
+    centre1: [
+      { value: 'centre1-venue1', label: 'Centre 1 Venue 1' },
+      { value: 'centre1-venue2', label: 'Centre 1 Venue 2' },
+      { value: 'centre1-venue3', label: 'Centre 1 Venue 3' },
+    ],
+    centre2: [
+      { value: 'centre2-venue1', label: 'Centre 2 Venue 1' },
+      { value: 'centre2-venue2', label: 'Centre 2 Venue 2' },
+      { value: 'centre2-venue3', label: 'Centre 2 Venue 3' },
+    ],
+    centre3: [
+      { value: 'centre3-venue1', label: 'Centre 3 Venue 1' },
+      { value: 'centre3-venue2', label: 'Centre 3 Venue 2' },
+      { value: 'centre3-venue3', label: 'Centre 3 Venue 3' },
+    ],
+  };
+
+  const [centre, setCentre] = useState('centre1');
+
   const {
     register,
+    unregister,
     handleSubmit,
-    watch,
     formState: { errors },
     reset,
   } = useForm<Inputs>({
@@ -65,43 +103,27 @@ export default function VenueRequestForm() {
   });
   const onSubmit: SubmitHandler<Inputs> = (data): void => {
     console.log(data);
+    setCentre('centre1');
     reset();
   };
 
-  // subscribe to changes of centre
-  const watchCentre: string = watch('centre');
-
-  // render different venues based on centre selected
-  const switchVenues = (centre: string): React.ReactNode => {
-    switch (centre) {
-      case 'centre2':
-        return (
-          <>
-            <option value='centre2-venue1'>Centre 2 Venue 1</option>
-            <option value='centre2-venue2'>Centre 2 Venue 2</option>
-            <option value='centre2-venue3'>Centre 2 Venue 3</option>
-          </>
-        );
-      case 'centre3':
-        return (
-          <>
-            <option value='centre3-venue1'>Centre 3 Venue 1</option>
-            <option value='centre3-venue2'>Centre 3 Venue 2</option>
-            <option value='centre3-venue3'>Centre 3 Venue 3</option>
-          </>
-        );
-      default:
-        return (
-          <>
-            <option value='centre1-venue1'>Centre 1 Venue 1</option>
-            <option value='centre1-venue2'>Centre 1 Venue 2</option>
-            <option value='centre1-venue3'>Centre 1 Venue 3</option>
-          </>
-        );
-    }
+  const changeVenues = (e: React.ChangeEvent<HTMLSelectElement>): void => {
+    setCentre(e.target.value);
+    unregister('venue');
   };
 
-  const venueSelector = useRef<HTMLSelectElement>(null);
+  // render different venues based on centre selected
+  const switchVenues = (): React.ReactNode => {
+    return (
+      <select id='venue' {...register('venue')}>
+        {venueOptions[centre].map((venueOption) => (
+          <option key={venueOption.value} value={venueOption.value}>
+            {venueOption.label}
+          </option>
+        ))}
+      </select>
+    );
+  };
 
   interface amenities {
     name:
@@ -196,7 +218,10 @@ export default function VenueRequestForm() {
                     aria-hidden='true'
                     className='pb-1.5 mr-1'
                   />
-                  <select id='centre' {...register('centre')}>
+                  <select
+                    id='centre'
+                    {...register('centre')}
+                    onChange={changeVenues}>
                     <option value='centre1'>Centre 1</option>
                     <option value='centre2'>Centre 2</option>
                     <option value='centre3'>Centre 3</option>
@@ -219,12 +244,7 @@ export default function VenueRequestForm() {
                     aria-hidden='true'
                     className='pb-1.5 mr-1'
                   />
-                  <select
-                    id='venue'
-                    {...register('venue')}
-                    onChange={(e) => console.log(e.target.value)}>
-                    {switchVenues(watchCentre)}
-                  </select>
+                  {switchVenues()}
                 </div>
               </div>
 
