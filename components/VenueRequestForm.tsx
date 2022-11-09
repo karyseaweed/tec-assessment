@@ -1,4 +1,4 @@
-import React from 'react';
+import { useRef, useEffect } from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -22,9 +22,6 @@ type Inputs = {
   amenityLoremIpsum: boolean;
   other: string;
 };
-
-const today = new Date();
-today.setHours(0, 0, 0, 0);
 
 const validationSchema = yup.object().shape({
   fullName: yup.string().required('Please enter your full name.'),
@@ -56,7 +53,7 @@ const validationSchema = yup.object().shape({
   other: yup.string(),
 });
 
-export default function Form() {
+export default function VenueRequestForm() {
   const {
     register,
     handleSubmit,
@@ -103,6 +100,8 @@ export default function Form() {
         );
     }
   };
+
+  const venueSelector = useRef<HTMLSelectElement>(null);
 
   interface amenities {
     name:
@@ -220,7 +219,10 @@ export default function Form() {
                     aria-hidden='true'
                     className='pb-1.5 mr-1'
                   />
-                  <select id='venue' {...register('venue')}>
+                  <select
+                    id='venue'
+                    {...register('venue')}
+                    onChange={(e) => console.log(e.target.value)}>
                     {switchVenues(watchCentre)}
                   </select>
                 </div>

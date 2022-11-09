@@ -5,8 +5,8 @@ interface GoldCheckListProps {
 }
 
 const GoldCheckList = ({ goldCheckListItems }: GoldCheckListProps) => {
-  const [expand, setExpand] = useState(false);
-  const toggleGoldCheckList = () => {
+  const [expand, setExpand] = useState<boolean>(false);
+  const toggleGoldCheckList = (): void => {
     setExpand(!expand);
   };
   return (
@@ -39,7 +39,7 @@ const GoldCheckList = ({ goldCheckListItems }: GoldCheckListProps) => {
           height='6'
           alt=''
           aria-hidden='true'
-          className={`inline-block ml-2 ${expand && 'rotate-180'}`}
+          className={`inline-block ml-2 ${expand ? 'rotate-180' : ''}`}
         />
       </p>
     </>

@@ -2,7 +2,7 @@ import Head from 'next/head';
 import IconListItem from '../components/IconListItem';
 import Button from '../components/Button';
 import Carousel from '../components/Carousel';
-import Form from '../components/Form';
+import VenueRequestForm from '../components/VenueRequestForm';
 import GoldCheckList from '../components/GoldCheckList';
 
 export default function Home() {
@@ -85,12 +85,12 @@ export default function Home() {
                 <GoldCheckList goldCheckListItems={goldCheckListItems} />
                 {/* buttons */}
                 <div className='fixed z-10 bottom-0 left-0 bg-white w-full pt-4 px-6 pb-8 border-t border-grey-200 lg:border-0 lg:absolute lg:p-0'>
-                  <Button clickHandler={logButtonName} className='lg:mb-2'>
+                  <Button onClick={logButtonName} className='lg:mb-2'>
                     enquiry
                   </Button>
                   <Button
                     secondary
-                    clickHandler={logButtonName}
+                    onClick={logButtonName}
                     className='hidden lg:block'>
                     360&deg; virtual tour
                   </Button>
@@ -111,7 +111,7 @@ export default function Home() {
           </div>
         </section>
         <section>
-          <Form />
+          <VenueRequestForm />
         </section>
       </main>
     </div>
